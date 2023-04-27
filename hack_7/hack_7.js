@@ -14,9 +14,16 @@
 */
 
 
+const axios = require("axios");
 async function fnTest(id) {
-  //...
-  return 
+  const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error)
+    throw new Error('server error');
+  }
 }
 
 module.exports = fnTest;
